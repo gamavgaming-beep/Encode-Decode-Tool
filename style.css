@@ -1,0 +1,48 @@
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #2563eb;
+}
+body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, Arial; margin:0; padding:0; }
+.topbar { display:flex; justify-content:space-between; align-items:center; padding:14px 18px; background:linear-gradient(90deg,#ffffff00,#ffffff00); box-shadow:0 1px 0 rgba(0,0,0,0.05); }
+.topbar h1 { font-size:18px; margin:0; }
+.controls-header button { padding:6px 8px; border-radius:8px; border:0; background:#eee; cursor:pointer; }
+
+.container { max-width:760px; margin:18px auto; padding:18px; border-radius:12px; background:var(--card); box-shadow:0 6px 18px rgba(16,24,40,0.05); }
+.label { display:block; margin-bottom:6px; color:var(--muted); font-size:13px; }
+textarea { width:100%; min-height:120px; padding:12px; border-radius:8px; border:1px solid #e6e9ee; resize:vertical; font-size:14px; }
+.row { display:flex; gap:12px; margin-top:12px; flex-wrap:wrap; }
+.col { flex:1; min-width:180px; }
+select,input { width:100%; padding:10px; border-radius:8px; border:1px solid #e6e9ee; font-size:14px; }
+.actions { margin-top:14px; align-items:center; }
+.actions button { padding:10px 12px; border-radius:8px; border:0; background:var(--accent); color:white; cursor:pointer; margin-right:8px; }
+.actions button:nth-child(3), .actions button:nth-child(4) { background:#333; }
+.filebutton { display:inline-block; background:#f3f4f6; padding:8px 10px; border-radius:8px; cursor:pointer; color:var(--muted); font-size:13px; }
+.filebutton input[type=file]{ display:none; }
+
+.result-area { margin-top:16px; }
+.resultbox { white-space:pre-wrap; background: #fbfdff; border:1px solid #e8eefc; padding:12px; border-radius:8px; min-height:80px; max-height:360px; overflow:auto; }
+
+.qrcode-wrap { margin-top:12px; display:flex; flex-direction:column; align-items:center; gap:8px; }
+#qrcode canvas, #qrcode img { max-width:240px; width:100%; height:auto; }
+
+.footer-note { margin-top:12px; color:var(--muted); font-size:12px; text-align:center; }
+
+/* Dark mode */
+body.dark {
+  --bg: #0b1220;
+  --card: #071024;
+  --text: #e6eef6;
+  --muted: #94a3b8;
+  --accent: #7cc3ff;
+}
+body.dark .controls-header button { background:#082033; color:#fff; }
+
+/* Responsive */
+@media (max-width:560px) {
+  .row { flex-direction:column; }
+  .actions { display:flex; flex-direction:column; }
+  .actions button, .filebutton { width:100%; margin-bottom:8px; }
+}

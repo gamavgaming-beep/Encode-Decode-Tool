@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>All-in-One Encode & Decode Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>🔐 Encode · Decode · QR</h1>
+    <div class="controls-header">
+      <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <label class="label">Input</label>
+    <textarea id="inputText" placeholder="Type or paste text here..."></textarea>
+
+    <div class="row">
+      <div class="col">
+        <label class="label">Method</label>
+        <select id="method">
+          <option value="base64">Base64</option>
+          <option value="hex">Hex</option>
+          <option value="url">URL Encode</option>
+          <option value="xor">XOR (Key Required)</option>
+          <option value="aes">AES (Password Required)</option>
+          <option value="md5">MD5 (Hash)</option>
+          <option value="sha256">SHA-256 (Hash)</option>
+          <option value="qrgen">QR: Generate (image)</option>
+          <option value="qrdecode">QR: Decode (upload image)</option>
+        </select>
+      </div>
+
+      <div class="col">
+        <label class="label">Key / Password</label>
+        <input type="text" id="key" placeholder="Key or password (if needed)"/>
+      </div>
+    </div>
+
+    <div class="row actions">
+      <button onclick="encode()">Encode / Generate</button>
+      <button onclick="decode()">Decode / Scan</button>
+      <button onclick="copyResult()">Copy</button>
+      <button onclick="downloadResult()">Download</button>
+      <label class="filebutton" id="qrFileLabel">
+        <input type="file" id="qrFile" accept="image/*" onchange="onQRFileSelected(event)" />
+        Upload QR Image
+      </label>
+    </div>
+
+    <section class="result-area">
+      <label class="label">Result</label>
+      <pre id="result" class="resultbox" readonly></pre>
+
+      <div id="qrcodeContainer" class="qrcode-wrap" hidden>
+        <label class="label">QR Code</label>
+        <div id="qrcode"></div>
+      </div>
+    </section>
+
+    <footer class="footer-note">
+      <small>Runs completely in your browser. Keep passwords/keys safe. Hashes cannot be reversed.</small>
+    </footer>
+
+  </main>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
